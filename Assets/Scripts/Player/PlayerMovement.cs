@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
     private bool _canMove = true;
+    private bool _lockedOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +40,18 @@ public class PlayerMovement : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        if(_verticalInput != 0 || _horizontalInput != 0)
+        if(_verticalInput != 0 || _horizontalInput != 0 && _lockedOn == true)
         {
             Animator.SetBool("Walking", true);
         }
         else
         {
             Animator.SetBool("Walking", false);
+        }
+
+        if(_lockedOn == false)
+        {
+            _horizontalInput = 0;
         }
     }
 
