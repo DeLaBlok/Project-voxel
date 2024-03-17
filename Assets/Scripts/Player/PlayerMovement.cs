@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody Rigidbody;
+    Animator Animator;
     public float MoveSpeed = 8f;
     private float _horizontalInput;
     private float _verticalInput;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,15 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
+
+        if(_verticalInput != 0 || _horizontalInput != 0)
+        {
+            Animator.SetBool("Walking", true);
+        }
+        else
+        {
+            Animator.SetBool("Walking", false);
+        }
     }
 
     private void Movement()
