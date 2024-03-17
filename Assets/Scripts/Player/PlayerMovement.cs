@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed = 8f;
     private float _horizontalInput;
     private float _verticalInput;
+    private bool _canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
     }
+
+    public void CanMoveToggle()
+    {
+        _canMove = !_canMove;
+    }
+
     private void PlayerInput()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
@@ -33,8 +40,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        Vector3 Moving = new Vector3 (_horizontalInput * MoveSpeed, 0f, _verticalInput * MoveSpeed);
-        Rigidbody.AddRelativeForce(Moving.normalized * MoveSpeed * 10f, ForceMode.Force);
+        if(_canMove == true)
+        {
+            Vector3 Moving = new Vector3 (_horizontalInput * MoveSpeed, 0f, _verticalInput * MoveSpeed);
+            Rigidbody.AddRelativeForce(Moving.normalized * MoveSpeed * 10f, ForceMode.Force);
+        }
     }   
 
     private void SpeedControl()
