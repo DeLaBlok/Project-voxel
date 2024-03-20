@@ -9,8 +9,16 @@ public class PlayerCombat : MonoBehaviour
     private bool _heavyInput = false;
     private bool _canQueue = false;
     private bool CanStartCombo = true;
+    public bool Attacking = false;
 
     public BoxCollider HitBox;
+
+    Vector3 AttackDir;
+    Vector3 LastForward;
+    public Transform PlayerBody;
+    public bool DirMustReset = false;
+    private float _horizontal;
+    private float _vertical;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +30,23 @@ public class PlayerCombat : MonoBehaviour
     {
         QueueNextAttack();
         StartAttack();
+        AttackDirection();
     }
 
     private void StartAttack()
     {
         if(Input.GetMouseButtonDown(0) && CanStartCombo == true)
         {
+            DirMustReset = true;
+            Attacking = true;
             Animator.SetBool("LightInput", true);
             CanStartCombo = false;
         }
 
         if(Input.GetMouseButtonDown(1) && CanStartCombo == true)
         {
+            DirMustReset = true;
+            Attacking = true;
             Animator.SetBool("HeavyInput", true);
             CanStartCombo = false;
         }
@@ -98,5 +111,30 @@ public class PlayerCombat : MonoBehaviour
     public void ResetCombo()
     {
         CanStartCombo = true;
+        Attacking = false;
+    }
+
+    private void AttackDirection()
+    {
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+
+        if(_horizontal != 0 || _vertical != 0)
+        {
+            AttackDir = PlayerBody.transform.forward;
+        }
+
+        if(Attacking == true && AttackDir != null)
+        {
+            transform.forward = AttackDir;
+        }
+    }
+
+    public void DirectionReset()
+    {
+        Vector3 CameraDir = Camera.main.transform.forward;
+        CameraDir = Vector3.ProjectOnPlane(CameraDir, Vector3.up);
+        transform.forward = CameraDir;
+        DirMustReset = false;
     }
 }

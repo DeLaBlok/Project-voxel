@@ -40,19 +40,7 @@ public class PlayerMovement : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        if(_verticalInput != 0 || _horizontalInput != 0 && _lockedOn == true)
-        {
-            Animator.SetBool("Walking", true);
-        }
-        else
-        {
-            Animator.SetBool("Walking", false);
-        }
-
-        if(_lockedOn == false)
-        {
-            _horizontalInput = 0;
-        }
+        AnimatorController();  
     }
 
     private void Movement()
@@ -73,4 +61,10 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody.velocity = new Vector3(LimitedVel.x, Rigidbody.velocity.y, LimitedVel.z);
         }
     }   
+
+    private void AnimatorController()
+    {
+        Animator.SetFloat("X", _horizontalInput);
+        Animator.SetFloat("Y", _verticalInput);
+    }
 }
