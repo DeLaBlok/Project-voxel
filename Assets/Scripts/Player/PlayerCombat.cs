@@ -16,13 +16,15 @@ public class PlayerCombat : MonoBehaviour
     Vector3 AttackDir;
     Vector3 LastForward;
     public Transform PlayerBody;
-    public bool DirMustReset = false;
     private float _horizontal;
     private float _vertical;
+
+    PlayerStamina PlayerStamina;
     // Start is called before the first frame update
     void Start()
     {
         Animator = GetComponent<Animator>();
+        PlayerStamina = GetComponent<PlayerStamina>();
     }
 
     // Update is called once per frame
@@ -37,18 +39,22 @@ public class PlayerCombat : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && CanStartCombo == true)
         {
-            DirMustReset = true;
             Attacking = true;
             Animator.SetBool("LightInput", true);
             CanStartCombo = false;
+
+            PlayerStamina.Stamina -= 10;
+            PlayerStamina.Cooldown();
         }
 
         if(Input.GetMouseButtonDown(1) && CanStartCombo == true)
         {
-            DirMustReset = true;
             Attacking = true;
             Animator.SetBool("HeavyInput", true);
             CanStartCombo = false;
+
+            PlayerStamina.Stamina -= 20;
+            PlayerStamina.Cooldown();
         }
     }
 
@@ -84,10 +90,16 @@ public class PlayerCombat : MonoBehaviour
         if(_lightInput == true)
         {
             Animator.SetBool("LightInput", true);
+
+            PlayerStamina.Stamina -= 10;
+            PlayerStamina.Cooldown();
         }
         else if(_heavyInput == true)
         {
             Animator.SetBool("HeavyInput", true);
+
+            PlayerStamina.Stamina -= 20;
+            PlayerStamina.Cooldown();
         }
         else
         {
@@ -132,9 +144,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void DirectionReset()
     {
-        Vector3 CameraDir = Camera.main.transform.forward;
-        CameraDir = Vector3.ProjectOnPlane(CameraDir, Vector3.up);
-        transform.forward = CameraDir;
-        DirMustReset = false;
+
     }
 }
