@@ -6,6 +6,10 @@ TagManager:
   tags:
   - LightEnemyAttack
   - HeavyEnemyAttack
+  - LightAttack
+  - HeavyAttack
+  - PlayerDetection
+  - AttackRange
   layers:
   - Default
   - TransparentFX
@@ -14,8 +18,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - PlayerAttack
+  - PlayerDetection
   - 
   - 
   - 

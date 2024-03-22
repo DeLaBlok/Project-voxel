@@ -47,9 +47,7 @@ public class PlayerStamina : MonoBehaviour
     IEnumerator CooldownCoroutine()
     {
         _cooldown = true;
-        Debug.Log("Start");
         yield return new WaitForSeconds(CooldownTimer);
         _cooldown = false;
-        Debug.Log("End");
     }
 }

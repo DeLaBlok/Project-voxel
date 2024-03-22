@@ -41,6 +41,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Attacking = true;
             Animator.SetBool("LightInput", true);
+            HitBox.tag = "LightAttack";
             CanStartCombo = false;
 
             PlayerStamina.Stamina -= 10;
@@ -51,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Attacking = true;
             Animator.SetBool("HeavyInput", true);
+            HitBox.tag = "HeavyAttack";
             CanStartCombo = false;
 
             PlayerStamina.Stamina -= 20;
@@ -90,6 +92,7 @@ public class PlayerCombat : MonoBehaviour
         if(_lightInput == true)
         {
             Animator.SetBool("LightInput", true);
+            HitBox.tag = "LightAttack";
 
             PlayerStamina.Stamina -= 10;
             PlayerStamina.Cooldown();
@@ -97,6 +100,7 @@ public class PlayerCombat : MonoBehaviour
         else if(_heavyInput == true)
         {
             Animator.SetBool("HeavyInput", true);
+            HitBox.tag = "HeavyAttack";
 
             PlayerStamina.Stamina -= 20;
             PlayerStamina.Cooldown();

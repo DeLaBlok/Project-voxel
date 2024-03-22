@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody Rigidbody;
     Animator Animator;
-    public float MoveSpeed = 8f;
+    public float MoveSpeed = 8;
     private float _horizontalInput;
     private float _verticalInput;
     private bool _canMove = true;
