@@ -8,6 +8,8 @@ public class BasicEnemyBehavior : MonoBehaviour
     Animator Animator;
     Rigidbody Rigidbody;
 
+    public BoxCollider HitBox;
+
     private int _choice = 0;
     private bool _choiceGenerated = false;
     private bool _isHurt = false;
@@ -51,9 +53,11 @@ public class BasicEnemyBehavior : MonoBehaviour
         {
             case 1:
                 Animator.SetBool("LightAttack", true);
+                HitBox.tag = "EnemyLightAttack";
                 break;
             case 2:
                 Animator.SetBool("HeavyAttack", true);
+                HitBox.tag = "EnemyHeavyAttack";
                 break;
             default:
 
@@ -76,6 +80,11 @@ public class BasicEnemyBehavior : MonoBehaviour
         _choiceGenerated = false;
         Animator.SetBool("LightAttack", false);
         Animator.SetBool("HeavyAttack", false);
+    }
+
+    public void ToggleHitbox()
+    {
+        HitBox.enabled = ! HitBox.enabled;
     }
 
     private void WalkToPlayer()

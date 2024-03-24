@@ -13,11 +13,7 @@ public class PlayerCombat : MonoBehaviour
 
     public BoxCollider HitBox;
 
-    Vector3 AttackDir;
-    Vector3 LastForward;
     public Transform PlayerBody;
-    private float _horizontal;
-    private float _vertical;
 
     PlayerStamina PlayerStamina;
     // Start is called before the first frame update
@@ -131,22 +127,6 @@ public class PlayerCombat : MonoBehaviour
     }
 
     private void AttackDirection()
-    {
-        _horizontal = Input.GetAxis("Horizontal");
-        _vertical = Input.GetAxis("Vertical");
-
-        if(_horizontal != 0 || _vertical != 0)
-        {
-            AttackDir = PlayerBody.transform.forward;
-        }
-
-        if(Attacking == true && AttackDir != null)
-        {
-            transform.forward = AttackDir;
-        }
-    }
-
-    public void DirectionReset()
     {
 
     }

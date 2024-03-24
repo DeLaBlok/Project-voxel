@@ -9,10 +9,13 @@ public class PlayerHealth : MonoBehaviour
 
     private int _flaskAmount = 3;
     public float HealAmount = 50;
+
+    PlayerMovement PlayerMovement;
     // Start is called before the first frame update
     void Start()
     {
         _health = _startHealth;
+        PlayerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -25,12 +28,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("LightEnemyAttack"))
+        if(other.CompareTag("EnemyLightAttack") && PlayerMovement.Dodge == false)
         {
             _health -= 10;
         }
 
-        if(other.CompareTag("HeavyEnemyAttack"))
+        if(other.CompareTag("EnemyHeavyAttack") && PlayerMovement.Dodge == false)
         {
             _health -= 20;
         }

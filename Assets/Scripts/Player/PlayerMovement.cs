@@ -6,10 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody Rigidbody;
     Animator Animator;
+
     public float MoveSpeed = 8;
+    public float DodgeSpeed = 5;
     private float _horizontalInput;
     private float _verticalInput;
-    private bool _canMove = true;
+
+    public bool CanMove = true;
+    public bool Dodge = false;
     private bool _lockedOn = false;
     // Start is called before the first frame update
     void Start()
@@ -28,11 +32,12 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        Dodging();
     }
 
     public void CanMoveToggle()
     {
-        _canMove = !_canMove;
+        CanMove = !CanMove;
     }
 
     private void PlayerInput()
@@ -40,21 +45,26 @@ public class PlayerMovement : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
+        if(Input.GetKeyDown("space") && Dodge == false)
+        {
+            Dodge = true;
+        }
+
         AnimatorController();  
     }
 
     private void Movement()
     {
-        if(_canMove == true)
+        if(CanMove == true && Dodge == false)
         {
-            Vector3 Moving = new Vector3 (_horizontalInput * MoveSpeed, 0f, _verticalInput * MoveSpeed);
-            Rigidbody.AddRelativeForce(Moving.normalized * MoveSpeed * 10f, ForceMode.Force);
+            Vector3 Moving = new Vector3 (_horizontalInput * MoveSpeed, 0, _verticalInput * MoveSpeed);
+            Rigidbody.AddRelativeForce(Moving.normalized * MoveSpeed * 10, ForceMode.Force);
         }
     }   
 
     private void SpeedControl()
     {
-        Vector3 FlatVel = new Vector3(Rigidbody.velocity.x, 0f, Rigidbody.velocity.z);
+        Vector3 FlatVel = new Vector3(Rigidbody.velocity.x, 0, Rigidbody.velocity.z);
         if(FlatVel.magnitude > MoveSpeed)
         {
             Vector3 LimitedVel = FlatVel.normalized * MoveSpeed;
@@ -64,7 +74,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void AnimatorController()
     {
-        Animator.SetFloat("X", _horizontalInput);
-        Animator.SetFloat("Y", _verticalInput);
+        if(_horizontalInput != 0 && CanMove == true || _verticalInput != 0 && CanMove == true)
+        {
+            Animator.SetBool("Walking", true);
+        }
+        else
+        {
+            Animator.SetBool("Walking", false);
+        }
+    }
+
+    private void Dodging()
+    {
+        if(Dodge == true)
+        {
+            Animator.SetBool("Dodge", true);
+            Vector3 Dodge = new Vector3 (_horizontalInput * DodgeSpeed, 0, _verticalInput * DodgeSpeed);
+            Rigidbody.AddRelativeForce(Dodge.normalized * DodgeSpeed, ForceMode.Impulse);
+        }
+    }
+
+    public void ResetDodge()
+    {
+        Dodge = false;
+        Animator.SetBool("Dodge", false);
     }
 }
