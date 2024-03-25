@@ -43,8 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerInput()
     {
+        if(Dodge == false)
+        {
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
+        }
 
         if(Input.GetKeyDown("space") && Dodge == false)
         {
