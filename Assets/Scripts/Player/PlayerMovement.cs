@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanMove = true;
     public bool Dodge = false;
-    private bool _lockedOn = false;
+    public bool LockedOn = false;
+    private bool _canLockOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         AnimatorController();  
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == false)
+        {
+            LockedOn = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == true)
+        {
+            LockedOn = false;
+        }
     }
 
     private void Movement()
