@@ -28,7 +28,7 @@ public class PlayerCamera : MonoBehaviour
     {
         Vector3 CameraDir = Camera.main.transform.forward;
         CameraDir = Vector3.ProjectOnPlane(CameraDir, Vector3.up);
-        if(PlayerCombat.Attacking == false && PlayerMovement.Dodge == false)
+        if(PlayerCombat.Attacking == false && PlayerMovement.Dodge == false || PlayerMovement.LockedOn == true)
         {
             Rigidbody.rotation = Quaternion.FromToRotation(Vector3.forward, CameraDir);
         }  

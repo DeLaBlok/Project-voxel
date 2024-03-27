@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         PlayerStamina = GetComponent<PlayerStamina>();
+        Physics.IgnoreLayerCollision(7, 10);
     }
 
     // Update is called once per frame

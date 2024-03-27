@@ -30,6 +30,7 @@ public class BasicEnemyBehavior : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
 
         Physics.IgnoreLayerCollision(7, 8);
+        Physics.IgnoreLayerCollision(7, 10);
     }
 
     // Update is called once per frame

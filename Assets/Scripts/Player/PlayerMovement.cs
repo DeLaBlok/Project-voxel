@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody Rigidbody;
     Animator Animator;
+    LockOnTarget LockOnTarget;
 
     public float MoveSpeed = 8;
     public float DodgeSpeed = 5;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponent<Animator>();
+        LockOnTarget = GetComponent<LockOnTarget>();
     }
 
     // Update is called once per frame
@@ -56,11 +58,11 @@ public class PlayerMovement : MonoBehaviour
 
         AnimatorController();  
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == false)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == false && GameManager.Instance.EnemiesInLockOnRange.Count != 0)
         {
             LockedOn = true;
         }
-        else if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == true)
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && LockedOn == true || GameManager.Instance.EnemiesInLockOnRange.Count <= 0)
         {
             LockedOn = false;
         }

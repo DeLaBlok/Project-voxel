@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _health = _startHealth;
         PlayerMovement = GetComponent<PlayerMovement>();
+        Physics.IgnoreLayerCollision(9, 10);
     }
 
     // Update is called once per frame
