@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         _verticalInput = Input.GetAxis("Vertical");
         }
 
-        if(Input.GetKeyDown("space") && Dodge == false && PlayerStamina.Stamina >= 0 && PlayerHealth.Hurting == false && _horizontalInput != 0 && _verticalInput != 0)
+        if(Input.GetKeyDown("space") && Dodge == false && PlayerStamina.Stamina >= 0 && PlayerHealth.Hurting == false && (_horizontalInput != 0 || _verticalInput != 0))
         {
             Dodge = true;
             PlayerStamina.Stamina -= 20;
