@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStamina : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerStamina : MonoBehaviour
 
     private bool _cooldown = false;
     public float CooldownTimer = 2;
+
+    public Image StaminaBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,7 @@ public class PlayerStamina : MonoBehaviour
     {
         StaminaRegen();
         StaminaCap();
+        StaminaBarFill();
     }
 
     private void StaminaRegen()
@@ -49,5 +53,10 @@ public class PlayerStamina : MonoBehaviour
         _cooldown = true;
         yield return new WaitForSeconds(CooldownTimer);
         _cooldown = false;
+    }
+
+    private void StaminaBarFill()
+    {
+        StaminaBar.fillAmount = Stamina / _maxStamina;
     }
 }

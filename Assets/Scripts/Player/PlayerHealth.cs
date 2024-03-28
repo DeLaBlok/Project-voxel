@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public float HealAmount = 50;
 
     PlayerMovement PlayerMovement;
+
+    public Image HealthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         PlayerDeath();
         PlayerHealing();
         HealthCap();
+        HealthBarFill();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,5 +67,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void HealthBarFill()
+    {
+        HealthBar.fillAmount = _health / _startHealth;
     }
 }
