@@ -11,6 +11,7 @@ TagManager:
   - EnemyLightAttack
   - EnemyHeavyAttack
   - LockOnRange
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX

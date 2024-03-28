@@ -255,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2512445}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.027057692, y: 0.9588323, z: -0.2303859, w: 0.16380122}
+  m_LocalRotation: {x: -0.027057696, y: 0.95883226, z: -0.23038591, w: 0.16380127}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10956,7 +10956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3.938085, z: -11.15026}
+  m_FollowOffset: {x: 0, y: 2.000013, z: -6.000044}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -17302,7 +17302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3.938085, z: -11.15026}
+  m_FollowOffset: {x: 0, y: 2.000013, z: -6.000044}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -18338,7 +18338,7 @@ Transform:
   m_GameObject: {fileID: 719217622}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16018222, y: 0.00000008367996, z: -0.0000000135793865, w: 0.9870875}
-  m_LocalPosition: {x: 10.784437, y: -3.8714132, z: -34.581623}
+  m_LocalPosition: {x: 10.78458, y: -3.871437, z: -34.58196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24082,7 +24082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.036070216, y: 0.000000035637235, z: -0.00000000128628, w: 0.9993493}
+  m_LocalRotation: {x: 0.036070235, y: -0.000000042002036, z: 0.0000000015160099, w: 0.9993493}
   m_LocalPosition: {x: 0, y: 2.45, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26088,7 +26088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3.938085, z: -11.15026}
+  m_FollowOffset: {x: 0, y: 2.000013, z: -6.000044}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -27962,6 +27962,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3491102120531948590, guid: 4da8501fe54ba454b94947115aed44cb, type: 3}
   m_PrefabInstance: {fileID: 363700563}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1119772163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119772164}
+  m_Layer: 0
+  m_Name: EnemyLook
+  m_TagString: PlayerTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119772164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119772163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5951893139499212487}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1122222388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39746,7 +39777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652440250}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.010321353, y: 0.9305539, z: -0.3263535, w: 0.16569982}
+  m_LocalRotation: {x: -0.010321353, y: 0.9305539, z: -0.3263535, w: 0.16569984}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51356,6 +51387,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4563724002056989543, guid: 188bc9f24d3da1e4c9e60806325ed28e, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6217459830309290229, guid: 188bc9f24d3da1e4c9e60806325ed28e, type: 3}
       propertyPath: m_Name
       value: Goblin
@@ -51442,6 +51477,7 @@ Transform:
   - {fileID: 3326341619741134425}
   - {fileID: 8975640374402253348}
   - {fileID: 1842084205}
+  - {fileID: 1119772164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5983755005470719902
@@ -51543,7 +51579,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!95 &6472393850649248898
 Animator:

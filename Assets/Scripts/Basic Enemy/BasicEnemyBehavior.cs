@@ -11,9 +11,11 @@ public class BasicEnemyBehavior : MonoBehaviour
     public BoxCollider HitBox;
 
     private int _choice = 0;
+    private float _health = 100;
+
     private bool _choiceGenerated = false;
     private bool _isHurt = false;
-    private float _health = 100;
+    private bool _cooldown = false;
 
     public float MoveSpeed = 6;
     public float LightDamage = 10;
@@ -21,6 +23,7 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     public DetectPlayer DetectPlayer;
     public AttackRange AttackRange;
+
     private GameObject _player;
 
     // Start is called before the first frame update
@@ -28,7 +31,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     {
         GameManager.Instance.Enemies.Add(this.gameObject);
 
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag("PlayerTarget");
 
         Animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody>();
@@ -56,6 +59,8 @@ public class BasicEnemyBehavior : MonoBehaviour
     {
         switch(_choice)
         {
+            case 0:
+                break;
             case 1:
                 Animator.SetBool("LightAttack", true);
                 HitBox.tag = "EnemyLightAttack";
@@ -72,7 +77,7 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     private void RNGChoice()
     {
-        if(AttackRange.PlayerInRange == true && _choiceGenerated == false)
+        if(AttackRange.PlayerInRange == true && _choiceGenerated == false && _cooldown == false)
         {
             _choice = Random.Range(1,3);
             _choiceGenerated = true;
@@ -81,10 +86,8 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     public void ResetAttack()
     {
-        _choice = 0;
+        _cooldown = false;
         _choiceGenerated = false;
-        Animator.SetBool("LightAttack", false);
-        Animator.SetBool("HeavyAttack", false);
     }
 
     public void ToggleHitbox()
@@ -165,5 +168,20 @@ public class BasicEnemyBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         Destroy(this.gameObject);
+    }
+
+    public void SetCooldown()
+    {
+        _choice = 0;
+        Animator.SetBool("LightAttack", false);
+        Animator.SetBool("HeavyAttack", false);
+        StartCoroutine(AttackCooldown());
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        _cooldown = true;
+        yield return new WaitForSeconds(3);
+        ResetAttack();
     }
 }
