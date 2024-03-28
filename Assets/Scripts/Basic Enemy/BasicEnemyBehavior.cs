@@ -23,6 +23,7 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     public DetectPlayer DetectPlayer;
     public AttackRange AttackRange;
+    public AudioSource Pain;
 
     private GameObject _player;
 
@@ -191,5 +192,10 @@ public class BasicEnemyBehavior : MonoBehaviour
         _cooldown = true;
         yield return new WaitForSeconds(3);
         ResetAttack();
+    }
+
+    public void PlayPain()
+    {
+        Pain.Play();
     }
 }

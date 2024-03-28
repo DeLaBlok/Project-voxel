@@ -41,12 +41,6 @@ public class WaveManager : MonoBehaviour
             case 4:
                 Wave4();
                 break;
-            case 5:
-                Wave5();
-                break;
-            case 6:
-                Wave6();
-                break;
             default:
                 break;
         }
@@ -70,6 +64,7 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
+            Instantiate(Goblin, Spawnpoint1);
             Instantiate(Goblin, Spawnpoint2);
             _hasSpawned = true;
         }
@@ -84,6 +79,8 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
+            Instantiate(Goblin, Spawnpoint1);
+            Instantiate(Goblin, Spawnpoint2);
             Instantiate(Goblin, Spawnpoint3);
             _hasSpawned = true;
         }
@@ -98,35 +95,10 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
+            Instantiate(Goblin, Spawnpoint1);
+            Instantiate(Goblin, Spawnpoint2);
+            Instantiate(Goblin, Spawnpoint3);
             Instantiate(Goblin, Spawnpoint4);
-            _hasSpawned = true;
-        }
-        else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
-        {
-            GameManager.Instance.WaveCount ++;
-            _hasSpawned = false;
-        }
-    }
-
-    private void Wave5()
-    {
-        if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
-        {
-            Instantiate(Goblin, Spawnpoint1);
-            _hasSpawned = true;
-        }
-        else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
-        {
-            GameManager.Instance.WaveCount ++;
-            _hasSpawned = false;
-        }
-    }
-
-    private void Wave6()
-    {
-        if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
-        {
-            Instantiate(Goblin, Spawnpoint1);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)

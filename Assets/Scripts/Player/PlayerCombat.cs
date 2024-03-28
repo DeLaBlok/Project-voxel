@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     Animator Animator;
+    PlayerStamina PlayerStamina;
+
+    public AudioSource Wazaah;
+
     private bool _lightInput = false;
     private bool _heavyInput = false;
     private bool _canQueue = false;
@@ -15,7 +19,6 @@ public class PlayerCombat : MonoBehaviour
 
     public Transform PlayerBody;
 
-    PlayerStamina PlayerStamina;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +32,13 @@ public class PlayerCombat : MonoBehaviour
     {
         QueueNextAttack();
         StartAttack();
-        AttackDirection();
     }
 
     private void StartAttack()
     {
         if(Input.GetMouseButtonDown(0) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
         {
+            Wazaah.Play();
             Attacking = true;
             Animator.SetBool("LightInput", true);
             HitBox.tag = "LightAttack";
@@ -47,6 +50,7 @@ public class PlayerCombat : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
         {
+            Wazaah.Play();
             Attacking = true;
             Animator.SetBool("HeavyInput", true);
             HitBox.tag = "HeavyAttack";
@@ -127,8 +131,11 @@ public class PlayerCombat : MonoBehaviour
         Attacking = false;
     }
 
-    private void AttackDirection()
+    public void ResetHitbox()
     {
-
+        if(HitBox.enabled == true)
+        {
+            HitBox.enabled = false;
+        }
     }
 }

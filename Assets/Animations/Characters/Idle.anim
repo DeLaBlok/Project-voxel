@@ -2213,13 +2213,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: AttackDirection
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.016666668
     functionName: ResetAttack
     data: 
@@ -2229,13 +2222,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.016666668
     functionName: ResetCombo
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.016666668
-    functionName: AttackDirection
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
