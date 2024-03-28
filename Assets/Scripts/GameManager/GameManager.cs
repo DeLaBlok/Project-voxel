@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Enemies = new List<GameObject>();
     public List<GameObject> EnemiesInLockOnRange = new List<GameObject>();
 
-    public float PlayerHealth;
-    public float PlayerStamina;
-
     public int WaveCount = 1;
 
     private void Awake()

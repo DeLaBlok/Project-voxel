@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody Rigidbody;
     Animator Animator;
     LockOnTarget LockOnTarget;
+    PlayerHealth PlayerHealth;
+    PlayerStamina PlayerStamina;
 
     public float MoveSpeed = 8;
     public float DodgeSpeed = 5;
@@ -17,12 +19,15 @@ public class PlayerMovement : MonoBehaviour
     public bool Dodge = false;
     public bool LockedOn = false;
     private bool _canLockOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponent<Animator>();
         LockOnTarget = GetComponent<LockOnTarget>();
+        PlayerStamina = GetComponent<PlayerStamina>();
+        PlayerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -43,6 +48,14 @@ public class PlayerMovement : MonoBehaviour
         CanMove = !CanMove;
     }
 
+    public void MoveReset()
+    {
+        if(CanMove == false)
+        {
+            CanMove = true;
+        }
+    }
+
     private void PlayerInput()
     {
         if(Dodge == false)
@@ -51,9 +64,11 @@ public class PlayerMovement : MonoBehaviour
         _verticalInput = Input.GetAxis("Vertical");
         }
 
-        if(Input.GetKeyDown("space") && Dodge == false)
+        if(Input.GetKeyDown("space") && Dodge == false && PlayerStamina.Stamina >= 0 && PlayerHealth.Hurting == false)
         {
             Dodge = true;
+            PlayerStamina.Stamina -= 20;
+            PlayerStamina.Cooldown();
         }
 
         AnimatorController();  
@@ -70,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if(CanMove == true && Dodge == false)
+        if(CanMove == true && Dodge == false && PlayerHealth.Hurting == false)
         {
             Vector3 Moving = new Vector3 (_horizontalInput * MoveSpeed, 0, _verticalInput * MoveSpeed);
             Rigidbody.AddRelativeForce(Moving.normalized * MoveSpeed * 10, ForceMode.Force);

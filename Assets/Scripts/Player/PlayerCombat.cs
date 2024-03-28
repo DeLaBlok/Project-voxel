@@ -34,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void StartAttack()
     {
-        if(Input.GetMouseButtonDown(0) && CanStartCombo == true)
+        if(Input.GetMouseButtonDown(0) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
         {
             Attacking = true;
             Animator.SetBool("LightInput", true);
@@ -45,7 +45,7 @@ public class PlayerCombat : MonoBehaviour
             PlayerStamina.Cooldown();
         }
 
-        if(Input.GetMouseButtonDown(1) && CanStartCombo == true)
+        if(Input.GetMouseButtonDown(1) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
         {
             Attacking = true;
             Animator.SetBool("HeavyInput", true);
@@ -59,13 +59,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void QueueNextAttack()
     {
-        if(Input.GetMouseButtonDown(0) && _canQueue == true)
+        if(Input.GetMouseButtonDown(0) && _canQueue == true && PlayerStamina.Stamina >= 0)
         {
             _lightInput = true;
             _heavyInput = false;
         }
 
-        if(Input.GetMouseButtonDown(1) && _canQueue == true)
+        if(Input.GetMouseButtonDown(1) && _canQueue == true && PlayerStamina.Stamina >= 0)
         {
             _heavyInput = true;
             _lightInput = false;

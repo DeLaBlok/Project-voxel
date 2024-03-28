@@ -11,7 +11,10 @@ public class PlayerHealth : MonoBehaviour
     private int _flaskAmount = 3;
     public float HealAmount = 50;
 
+    public bool Hurting = false;
+
     PlayerMovement PlayerMovement;
+    Animator Animator;
 
     public Image HealthBar;
     // Start is called before the first frame update
@@ -19,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _health = _startHealth;
         PlayerMovement = GetComponent<PlayerMovement>();
+        Animator = GetComponent<Animator>();
         Physics.IgnoreLayerCollision(9, 10);
     }
 
@@ -36,11 +40,15 @@ public class PlayerHealth : MonoBehaviour
         if(other.CompareTag("EnemyLightAttack") && PlayerMovement.Dodge == false)
         {
             _health -= 10;
+            Animator.SetTrigger("Hurt");
+            Hurting = true;
         }
 
         if(other.CompareTag("EnemyHeavyAttack") && PlayerMovement.Dodge == false)
         {
             _health -= 20;
+            Animator.SetTrigger("Hurt");
+            Hurting = true;
         }
     }
 
@@ -72,5 +80,11 @@ public class PlayerHealth : MonoBehaviour
     private void HealthBarFill()
     {
         HealthBar.fillAmount = _health / _startHealth;
+    }
+
+    public void ResetHurt()
+    {
+        Hurting = false;
+        Animator.ResetTrigger("Hurt");
     }
 }

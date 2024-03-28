@@ -7,7 +7,7 @@ public class PlayerStamina : MonoBehaviour
 {
     private float _maxStamina = 100;
     public float Stamina;
-    private float _staminaRegenAmount = 7;
+    private float _staminaRegenAmount = 12;
 
     private bool _cooldown = false;
     public float CooldownTimer = 2;

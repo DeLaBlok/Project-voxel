@@ -95,9 +95,17 @@ public class BasicEnemyBehavior : MonoBehaviour
         HitBox.enabled = ! HitBox.enabled;
     }
 
+    public void ResetHitbox()
+    {
+        if(HitBox.enabled == true)
+        {
+            HitBox.enabled = false;
+        }
+    }
+
     private void WalkToPlayer()
     {
-        if(DetectPlayer.PlayerDetected == true && _choice == 0 && _isHurt == false)
+        if(DetectPlayer.PlayerDetected == true && _choice == 0 && _isHurt == false && AttackRange.PlayerInRange == false)
         {
             Animator.SetBool("Walking", true);
             Rigidbody.AddRelativeForce(Vector3.forward * MoveSpeed * 10f, ForceMode.Force);
@@ -131,13 +139,13 @@ public class BasicEnemyBehavior : MonoBehaviour
         if(other.CompareTag("LightAttack"))
         {
             _health -= LightDamage;
-            Animator.SetBool("Hurt", true);
+            Animator.SetTrigger("PlayHurt");
             _isHurt = true;
         }
         else if(other.CompareTag("HeavyAttack"))
         {
             _health -= HeavyDamage;
-            Animator.SetBool("Hurt", true);
+            Animator.SetTrigger("PlayHurt");
             _isHurt = true;
         }
     }
@@ -145,7 +153,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     public void ResetHurt()
     {
         _isHurt = false;
-        Animator.SetBool("Hurt", false);
+        Animator.ResetTrigger("PlayHurt");
     }
 
     private void Death()
