@@ -21,11 +21,15 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     public DetectPlayer DetectPlayer;
     public AttackRange AttackRange;
-    public Transform Player;
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.Enemies.Add(this.gameObject);
+
+        _player = GameObject.FindGameObjectWithTag("Player");
+
         Animator = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody>();
 
@@ -115,7 +119,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     {
         if(DetectPlayer.PlayerDetected == true && _choice == 0 && _isHurt == false)
         {
-            transform.LookAt(Player);
+            transform.LookAt(_player.transform);
         }
     }
 
@@ -146,11 +150,20 @@ public class BasicEnemyBehavior : MonoBehaviour
         if(_health <= 0)
         {
             Animator.SetBool("Dead", true);
+            GameManager.Instance.Enemies.Remove(this.gameObject);
+            GameManager.Instance.EnemiesInLockOnRange.Remove(this.gameObject);
+            StartCoroutine(RemoveObject());
         }
     }
 
     public void AnimatorSetDead()
     {
         Animator.SetBool("HasDied", true);
+    }
+
+    IEnumerator RemoveObject()
+    {
+        yield return new WaitForSeconds(4);
+        Destroy(this.gameObject);
     }
 }

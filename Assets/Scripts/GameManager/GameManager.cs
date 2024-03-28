@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public List<GameObject> Enemies = new List<GameObject>();
     public List<GameObject> EnemiesInLockOnRange = new List<GameObject>();
 
     public int WaveCount = 1;
