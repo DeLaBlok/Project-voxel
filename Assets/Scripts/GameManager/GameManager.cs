@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public int WaveCount = 1;
 
+    public bool GameWon = false;
+
     private void Awake()
     {
         CreateSingleton();
@@ -28,5 +30,13 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void ResetGameManager()
+    {
+        Enemies.Clear();
+        EnemiesInLockOnRange.Clear();
+        WaveCount = 1;
+        GameWon = false;
     }
 }

@@ -32,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
     {
         QueueNextAttack();
         StartAttack();
+        AnimatorSpeed();
     }
 
     private void StartAttack()
@@ -136,6 +137,18 @@ public class PlayerCombat : MonoBehaviour
         if(HitBox.enabled == true)
         {
             HitBox.enabled = false;
+        }
+    }
+
+    private void AnimatorSpeed()
+    {
+        if(Attacking == true)
+        {
+            Animator.speed = 0.8f;
+        }
+        else
+        {
+            Animator.speed = 1;
         }
     }
 }

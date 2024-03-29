@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -73,7 +74,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if(_health <= 0)
         {
+            GameManager.Instance.ResetGameManager();
             Destroy(gameObject);
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 

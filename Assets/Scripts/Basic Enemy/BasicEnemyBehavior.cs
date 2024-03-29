@@ -16,6 +16,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     private bool _choiceGenerated = false;
     private bool _isHurt = false;
     private bool _cooldown = false;
+    private bool _attacking = false;
 
     public float MoveSpeed = 6;
     public float LightDamage = 10;
@@ -49,6 +50,7 @@ public class BasicEnemyBehavior : MonoBehaviour
         LookAtPlayer();
         SpeedControl();
         Death();
+        AnimatorSpeed();
     }
 
     private void FixedUpdate()
@@ -65,10 +67,12 @@ public class BasicEnemyBehavior : MonoBehaviour
             case 1:
                 Animator.SetBool("LightAttack", true);
                 HitBox.tag = "EnemyLightAttack";
+                _attacking = true;
                 break;
             case 2:
                 Animator.SetBool("HeavyAttack", true);
                 HitBox.tag = "EnemyHeavyAttack";
+                _attacking = true;
                 break;
             default:
 
@@ -181,6 +185,7 @@ public class BasicEnemyBehavior : MonoBehaviour
 
     public void SetCooldown()
     {
+        _attacking = false;
         _choice = 0;
         Animator.SetBool("LightAttack", false);
         Animator.SetBool("HeavyAttack", false);
@@ -190,12 +195,24 @@ public class BasicEnemyBehavior : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         _cooldown = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         ResetAttack();
     }
 
     public void PlayPain()
     {
         Pain.Play();
+    }
+
+    public void AnimatorSpeed()
+    {
+        if(_attacking == true)
+        {
+            Animator.speed = 0.8f;
+        }
+        else
+        {
+            Animator.speed = 1;
+        }
     }
 }
