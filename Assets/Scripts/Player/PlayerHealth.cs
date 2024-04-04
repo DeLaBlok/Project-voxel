@@ -9,7 +9,8 @@ public class PlayerHealth : MonoBehaviour
     private float _startHealth = 100;
     private float _health;
 
-    private int _flaskAmount = 3;
+    private int _flaskAmount = 4;
+    private float _flaskFill;
     public float HealAmount = 50;
 
     public bool Hurting = false;
@@ -18,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     Animator Animator;
 
     public Image HealthBar;
+    public Image Flask;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         PlayerHealing();
         HealthCap();
         HealthBarFill();
+        FlaskFill();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,6 +86,33 @@ public class PlayerHealth : MonoBehaviour
     private void HealthBarFill()
     {
         HealthBar.fillAmount = _health / _startHealth;
+    }
+
+    private void FlaskFill()
+    {
+        switch(_flaskAmount)
+        {
+            case 4:
+                _flaskFill = 1;
+                break;
+            case 3:
+                _flaskFill = 0.75f;
+                break;
+            case 2:
+                _flaskFill = 0.5f;
+                break;
+            case 1:
+                _flaskFill = 0.25f;
+                break;
+            case 0:
+                _flaskFill = 0;
+                break;
+            default:
+                _flaskFill = 0;
+                break;
+        }
+
+        Flask.fillAmount = _flaskFill;
     }
 
     public void ResetHurt()

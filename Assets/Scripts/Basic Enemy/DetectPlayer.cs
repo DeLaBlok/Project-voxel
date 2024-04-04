@@ -16,9 +16,6 @@ public class DetectPlayer : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
-        {
-            PlayerDetected = false;
-        }
+        
     }
 }

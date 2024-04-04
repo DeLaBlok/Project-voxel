@@ -18,7 +18,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     private bool _cooldown = false;
     private bool _attacking = false;
 
-    public float MoveSpeed = 6;
+    public float MoveSpeed = 7;
     public float LightDamage = 10;
     public float HeavyDamage = 20;
 

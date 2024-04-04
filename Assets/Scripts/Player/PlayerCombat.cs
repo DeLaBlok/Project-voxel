@@ -15,6 +15,9 @@ public class PlayerCombat : MonoBehaviour
     private bool CanStartCombo = true;
     public bool Attacking = false;
 
+    private float _lightStaminaCost = 20;
+    private float _heavyStaminaCost = 30;
+
     public BoxCollider HitBox;
 
     public Transform PlayerBody;
@@ -45,7 +48,7 @@ public class PlayerCombat : MonoBehaviour
             HitBox.tag = "LightAttack";
             CanStartCombo = false;
 
-            PlayerStamina.Stamina -= 10;
+            PlayerStamina.Stamina -= _lightStaminaCost;
             PlayerStamina.Cooldown();
         }
 
@@ -57,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
             HitBox.tag = "HeavyAttack";
             CanStartCombo = false;
 
-            PlayerStamina.Stamina -= 20;
+            PlayerStamina.Stamina -= _heavyStaminaCost;
             PlayerStamina.Cooldown();
         }
     }
@@ -96,7 +99,7 @@ public class PlayerCombat : MonoBehaviour
             Animator.SetBool("LightInput", true);
             HitBox.tag = "LightAttack";
 
-            PlayerStamina.Stamina -= 10;
+            PlayerStamina.Stamina -= _lightStaminaCost;
             PlayerStamina.Cooldown();
         }
         else if(_heavyInput == true)
@@ -104,7 +107,7 @@ public class PlayerCombat : MonoBehaviour
             Animator.SetBool("HeavyInput", true);
             HitBox.tag = "HeavyAttack";
 
-            PlayerStamina.Stamina -= 20;
+            PlayerStamina.Stamina -= _heavyStaminaCost;
             PlayerStamina.Cooldown();
         }
         else

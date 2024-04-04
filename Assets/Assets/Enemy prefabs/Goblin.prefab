@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitBox: {fileID: 3234831265602397773}
-  MoveSpeed: 6
+  MoveSpeed: 7
   LightDamage: 10
   HeavyDamage: 20
   DetectPlayer: {fileID: 6550055577840112726}
@@ -1028,7 +1028,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25, y: 1, z: 25}
+  m_Size: {x: 40, y: 1, z: 40}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8658168092664696173
 GameObject:
