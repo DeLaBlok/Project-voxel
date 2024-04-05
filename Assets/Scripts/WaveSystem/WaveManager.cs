@@ -8,6 +8,11 @@ public class WaveManager : MonoBehaviour
     public Transform Spawnpoint2;
     public Transform Spawnpoint3;
     public Transform Spawnpoint4;
+    public Transform Spawnpoint5;
+    public Transform Spawnpoint6;
+    public Transform Spawnpoint7;
+    public Transform Spawnpoint8;
+    public Transform Spawnpoint9;
 
     public GameObject Goblin;
     public GameObject Skeleton;
@@ -48,7 +53,7 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
-            Instantiate(Goblin, Spawnpoint1);
+            Instantiate(Goblin, Spawnpoint3);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
@@ -62,8 +67,8 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
-            Instantiate(Goblin, Spawnpoint1);
-            Instantiate(Goblin, Spawnpoint2);
+            Instantiate(Goblin, Spawnpoint5);
+            Instantiate(Goblin, Spawnpoint8);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
@@ -79,7 +84,7 @@ public class WaveManager : MonoBehaviour
         {
             Instantiate(Goblin, Spawnpoint1);
             Instantiate(Goblin, Spawnpoint2);
-            Instantiate(Goblin, Spawnpoint3);
+            Instantiate(Skeleton, Spawnpoint3);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
@@ -93,10 +98,10 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
-            Instantiate(Goblin, Spawnpoint1);
-            Instantiate(Goblin, Spawnpoint2);
-            Instantiate(Goblin, Spawnpoint3);
+            Instantiate(Skeleton, Spawnpoint6);
+            Instantiate(Skeleton, Spawnpoint7);
             Instantiate(Goblin, Spawnpoint4);
+            Instantiate(Goblin, Spawnpoint9);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)
@@ -110,10 +115,11 @@ public class WaveManager : MonoBehaviour
     {
         if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == false)
         {
+            Instantiate(Skeleton, Spawnpoint6);
+            Instantiate(Skeleton, Spawnpoint7);
+            Instantiate(Skeleton, Spawnpoint9);
             Instantiate(Goblin, Spawnpoint1);
             Instantiate(Goblin, Spawnpoint2);
-            Instantiate(Goblin, Spawnpoint3);
-            Instantiate(Goblin, Spawnpoint4);
             _hasSpawned = true;
         }
         else if(GameManager.Instance.Enemies.Count == 0 && _hasSpawned == true)

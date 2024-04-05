@@ -516,6 +516,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 1}
+--- !u!1 &4764951624558400149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6362764341837979085}
+  m_Layer: 0
+  m_Name: HitEffectPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6362764341837979085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764951624558400149}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1874945819467208849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5004633563022903726
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +719,7 @@ GameObject:
   - component: {fileID: 6696771069945019891}
   - component: {fileID: 990535733582694659}
   - component: {fileID: 4757155907635187589}
+  - component: {fileID: 7570117361947953008}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -713,6 +745,7 @@ Transform:
   - {fileID: 6458062461709687954}
   - {fileID: 2844003221405769737}
   - {fileID: 3025080677597582265}
+  - {fileID: 6362764341837979085}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7384832960837044577
@@ -815,6 +848,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8, y: 2.5, z: 1}
   m_Center: {x: 0, y: 1.25, z: -0.1}
+--- !u!114 &7570117361947953008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217459830309290229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cf9fd27f08592448a600a142b8a874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitEffect: {fileID: 554572676737494018, guid: 6bb54ea509c167b429febd2e8c072e6e, type: 3}
+  HitEffectPoint: {fileID: 6362764341837979085}
 --- !u!1 &6267781239363872156
 GameObject:
   m_ObjectHideFlags: 0
