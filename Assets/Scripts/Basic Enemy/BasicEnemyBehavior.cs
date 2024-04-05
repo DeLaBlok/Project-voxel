@@ -196,7 +196,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         _cooldown = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         ResetAttack();
     }
 
