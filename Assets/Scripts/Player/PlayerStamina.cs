@@ -41,6 +41,11 @@ public class PlayerStamina : MonoBehaviour
         {
             Stamina = _maxStamina;
         }
+
+        if(Stamina < 0)
+        {
+            Stamina = 0;
+        }
     }
 
     public void Cooldown()

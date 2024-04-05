@@ -6,6 +6,7 @@ public class PlayerRotation : MonoBehaviour
 {
     private float _horizontalInput;
     private float _verticalInput;
+    private float _rotationSpeed = 10;
 
     public PlayerMovement PlayerMovement;
     // Start is called before the first frame update

@@ -25,6 +25,7 @@ public class BasicEnemyBehavior : MonoBehaviour
     public DetectPlayer DetectPlayer;
     public AttackRange AttackRange;
     public AudioSource Pain;
+    public AudioSource Slash;
 
     private GameObject _player;
 
@@ -202,6 +203,11 @@ public class BasicEnemyBehavior : MonoBehaviour
     public void PlayPain()
     {
         Pain.Play();
+    }
+
+    public void PlaySlash()
+    {
+        Slash.Play();
     }
 
     public void AnimatorSpeed()

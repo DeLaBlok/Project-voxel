@@ -15,12 +15,16 @@ public class PlayerCombat : MonoBehaviour
     private bool CanStartCombo = true;
     public bool Attacking = false;
 
+    private int _wazaahRNG;
+
     private float _lightStaminaCost = 20;
     private float _heavyStaminaCost = 30;
 
     public BoxCollider HitBox;
 
     public Transform PlayerBody;
+
+    public AudioSource Slash;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +44,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void StartAttack()
     {
-        if(Input.GetMouseButtonDown(0) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
+        if(Input.GetMouseButtonDown(0) && CanStartCombo == true && PlayerStamina.Stamina > 0)
         {
-            Wazaah.Play();
+            _wazaahRNG = Random.Range(1,501);
+            if(_wazaahRNG == 1)
+            {
+                Wazaah.Play();
+            }
             Attacking = true;
             Animator.SetBool("LightInput", true);
             HitBox.tag = "LightAttack";
@@ -52,9 +60,13 @@ public class PlayerCombat : MonoBehaviour
             PlayerStamina.Cooldown();
         }
 
-        if(Input.GetMouseButtonDown(1) && CanStartCombo == true && PlayerStamina.Stamina >= 0)
+        if(Input.GetMouseButtonDown(1) && CanStartCombo == true && PlayerStamina.Stamina > 0)
         {
-            Wazaah.Play();
+            _wazaahRNG = Random.Range(1,501);
+            if(_wazaahRNG == 1)
+            {
+                Wazaah.Play();
+            }
             Attacking = true;
             Animator.SetBool("HeavyInput", true);
             HitBox.tag = "HeavyAttack";
@@ -67,13 +79,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void QueueNextAttack()
     {
-        if(Input.GetMouseButtonDown(0) && _canQueue == true && PlayerStamina.Stamina >= 0)
+        if(Input.GetMouseButtonDown(0) && _canQueue == true && PlayerStamina.Stamina > 0)
         {
             _lightInput = true;
             _heavyInput = false;
         }
 
-        if(Input.GetMouseButtonDown(1) && _canQueue == true && PlayerStamina.Stamina >= 0)
+        if(Input.GetMouseButtonDown(1) && _canQueue == true && PlayerStamina.Stamina > 0)
         {
             _heavyInput = true;
             _lightInput = false;
@@ -153,5 +165,10 @@ public class PlayerCombat : MonoBehaviour
         {
             Animator.speed = 1;
         }
+    }
+
+    public void PlayAttackSound()
+    {
+        Slash.Play();
     }
 }
