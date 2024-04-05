@@ -20,6 +20,12 @@ public class PlayerHealth : MonoBehaviour
 
     public Image HealthBar;
     public Image Flask;
+
+    public GameObject HealEffect;
+    public Transform EffectPoint;
+
+    public AudioSource HealSound;
+    public AudioSource HurtSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,9 +66,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if(Input.GetKeyDown("q") && _flaskAmount != 0)
         {
-            _flaskAmount -= 1;
-            _health += HealAmount;
+            Animator.SetTrigger("Healing"); 
         }
+    }
+
+    public void HealingEffect()
+    {
+        _flaskAmount -= 1;
+        _health += HealAmount;
+        Instantiate(HealEffect,EffectPoint);
     }
 
     private void HealthCap()
@@ -113,6 +125,21 @@ public class PlayerHealth : MonoBehaviour
         }
 
         Flask.fillAmount = _flaskFill;
+    }
+
+    public void PlayHurtSound()
+    {
+        HurtSound.Play();
+    }
+
+    public void PlayHealSound()
+    {
+        HealSound.Play();
+    }
+
+    public void ResetHealing()
+    {
+        Animator.ResetTrigger("Healing");
     }
 
     public void ResetHurt()
